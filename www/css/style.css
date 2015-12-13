@@ -1,1 +1,38 @@
-/* Empty. Add your own CSS if you like */
+@font-face {
+  font-family: "HLicons";
+  src: url("../fonts/hl.ttf");
+  font-weight: normal;
+  font-style: normal; 
+}
+.hl-icon-homepage:before,
+.hl-icon-newproduct,
+.hl-icon-allproduct,
+.hl-icon-brand,
+.hl-icon-contact {
+  display: inline-block;
+  font-family: "HLicons";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-rendering: auto;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+}
+.hl-icon-homepage:before{
+	content: "B";
+}
+.hl-icon-newproduct:before{
+	content: "C";
+}
+.hl-icon-allproduct:before{
+	content: "A";
+}
+.hl-icon-brand:before{
+	content: "D";
+}
+.hl-icon-contact:before{
+	content: "E";
+}
