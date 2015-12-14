@@ -1,6 +1,9 @@
+/*
+icon css
+ */
 @font-face {
   font-family: "HLicons";
-  src: url("../fonts/hl.ttf");
+  src: url("../fonts/newFont-Regular.ttf");
   font-weight: normal;
   font-style: normal; 
 }
@@ -22,17 +25,44 @@
   -moz-osx-font-smoothing: grayscale; 
 }
 .hl-icon-homepage:before{
-	content: "B";
+	content: "A";
 }
 .hl-icon-newproduct:before{
 	content: "C";
 }
 .hl-icon-allproduct:before{
-	content: "A";
+	content: "B";
 }
 .hl-icon-brand:before{
-	content: "D";
+	content: "E";
 }
 .hl-icon-contact:before{
-	content: "E";
+	content: "D";
+}
+/*
+side box css
+ */
+.box {
+  height: 120px;
+}
+.yellow{
+  background-color: yellow;
+}
+.blue{
+  background-color: blue;
+}
+.pink{
+  background-color: pink;
+}
+/*
+home page background color
+ */
+.bar-lightblue{
+  background-color: #66B1D6;
+}
+.app-background{
+  background-color: #E7E7E9;
+}
+.shawdow{
+  box-shadow: 0px 1px 2px #888888;
 }

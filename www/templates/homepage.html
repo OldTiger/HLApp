@@ -1,3 +1,31 @@
-<ion-view view-title="豪隆羊绒">
-	<ion-content>1</ion-content>
+<ion-view class="app-background">
+    <ion-nav-title class="stable">
+        <i class="hl-icon-brand"></i>&nbsp;&nbsp;豪隆毛绒
+    </ion-nav-title>
+    <ion-content>
+        <!-- slide-box begin -->
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
+            <ion-slide>
+                <div class="box blue">
+                    <h1>BLUE</h1></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box yellow">
+                    <h1>YELLOW</h1></div>
+            </ion-slide>
+            <ion-slide>
+                <div class="box pink">
+                    <h1>PINK</h1></div>
+            </ion-slide>
+        </ion-slide-box>
+        <!-- slide-box end -->
+        <!-- begin search bar -->
+        <div class="list list-inset shawdow">
+            <label class="item item-input">
+                &nbsp;<i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="搜索">
+            </label>
+        </div>
+        <!-- end search bar -->
+    </ion-content>
 </ion-view>

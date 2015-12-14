@@ -30,7 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
-        .state('/allproduct', {
+        .state('tabs.allproduct', {
             url: '/allproduct',
             views: {
                 'allproduct-tab': {
@@ -39,7 +39,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                 }
             }
         })
-        .state('/contact', {
+        .state('tabs.contact', {
             url: '/contact',
             views: {
                 'contact-tab': {
