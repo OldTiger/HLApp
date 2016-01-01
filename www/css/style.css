@@ -76,3 +76,39 @@ border-bottom:2px solid #C6C9CA;
 .half-card{
   widows: 50%;
 }
+.product-footer{
+  padding: 7px;
+}
+.product-title {
+  display: block;
+  font-size: 1.15em;
+  text-align: center;
+  font-weight: bolder;
+}
+.product-price {
+  text-align:center;
+  color: #ACAEBF;
+  font-size: 0.9em;
+  display: block;
+}
+.categories {
+  height: 43px;
+  border: 1px solid #F0F1F1;
+
+}
+.category {
+  display: inline-block;
+  width: 18%;
+  height: 100%;
+  color: #393A3A;
+  text-align: center;
+  line-height: 3;
+  font-weight: bolder;
+
+}
+.selected-category {
+  border-bottom: 5px solid #66B0D6;
+}
+.more-categories{
+  color: #D5D5D6;
+}
