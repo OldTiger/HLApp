@@ -1,114 +1,175 @@
 /*
 icon css
  */
+
 @font-face {
-  font-family: "HLicons";
-  src: url("../fonts/newFont-Regular.ttf");
-  font-weight: normal;
-  font-style: normal; 
+    font-family: "HLicons";
+    src: url("../fonts/newFont-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
 }
+
 .hl-icon-homepage:before,
 .hl-icon-newproduct,
 .hl-icon-allproduct,
 .hl-icon-brand,
 .hl-icon-contact {
-  display: inline-block;
-  font-family: "HLicons";
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  text-rendering: auto;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
+    display: inline-block;
+    font-family: "HLicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-.hl-icon-homepage:before{
-	content: "A";
+
+.hl-icon-homepage:before {
+    content: "A";
 }
-.hl-icon-newproduct:before{
-	content: "C";
+
+.hl-icon-newproduct:before {
+    content: "C";
 }
-.hl-icon-allproduct:before{
-	content: "B";
+
+.hl-icon-allproduct:before {
+    content: "B";
 }
-.hl-icon-brand:before{
-	content: "E";
+
+.hl-icon-brand:before {
+    content: "E";
 }
-.hl-icon-contact:before{
-	content: "D";
+
+.hl-icon-contact:before {
+    content: "D";
 }
+
+
 /*
 side box css
  */
+
 .box {
-  height: 200px;
+    height: 200px;
 }
-.yellow{
-  background-color: yellow;
+
+.yellow {
+    background-color: yellow;
 }
-.blue{
-  background-color: blue;
+
+.blue {
+    background-color: blue;
 }
-.pink{
-  background-color: pink;
+
+.pink {
+    background-color: pink;
 }
+
+
 /*
 home page background color
  */
-.bar-lightblue{
-  background-color: #66B1D6;
-}
-.app-background{
-  background-color: #E7E7E9;
-}
-.shawdow{
-  box-shadow: 0px 1px 2px #888888;
-}
-.text-center{
-  text-align: center;
-}
-.border-top-bottom{
-  border-top:2px solid #C6C9CA;
-border-bottom:2px solid #C6C9CA;
-}
-.half-card{
-  widows: 50%;
-}
-.product-footer{
-  padding: 7px;
-}
-.product-title {
-  display: block;
-  font-size: 1.15em;
-  text-align: center;
-  font-weight: bolder;
-}
-.product-price {
-  text-align:center;
-  color: #ACAEBF;
-  font-size: 0.9em;
-  display: block;
-}
-.categories {
-  height: 43px;
-  border: 1px solid #F0F1F1;
 
+.bar-lightblue {
+    background-color: #66B1D6;
 }
-.category {
-  display: inline-block;
-  width: 18%;
+
+.app-background {
+    background-color: #E7E7E9;
+}
+
+.shawdow {
+    box-shadow: 0px 1px 2px #888888;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.border-top-bottom {
+    border-top: 2px solid #C6C9CA;
+    border-bottom: 2px solid #C6C9CA;
+}
+
+.half-card {
+    widows: 50%;
+}
+
+.product-footer {
+    padding: 7px;
+}
+
+.product-title {
+    display: block;
+    font-size: 1.15em;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.product-price {
+    text-align: center;
+    color: #ACAEBF;
+    font-size: 0.9em;
+    display: block;
+}
+
+.categories {
+    height: 35px;
+    border: 1px solid #F0F1F1;
+}
+
+.col-19 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 19%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 19%;
+    -ms-flex: 0 0 19%;
+    flex: 0 0 19%;
+    max-width: 19%;
+}
+
+.col-5 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 5%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 5%;
+    -ms-flex: 0 0 5%;
+    flex: 0 0 5%;
+    max-width: 5%;
+}
+
+.category,
+.more-categories {
+    color: #999;
+}
+
+.categories > .category {
+    /*  display: inline-block;
+  width: 19%;
   height: 100%;
   color: #393A3A;
   text-align: center;
-  line-height: 3;
-  font-weight: bolder;
+  font-weight: bolder;*/
+    line-height: 35px;
+    font-size: small;
+    font-weight: 500;
+}
 
-}
 .selected-category {
-  border-bottom: 5px solid #66B0D6;
+    color: #66B0D6;
+    border-bottom: 3px solid #66B0D6;
 }
-.more-categories{
+
+.more-categories {
+    /*text-align: center;
+  display: inline-block;
   color: #D5D5D6;
+  width:1%;
+  height: 100%;
+  line-height: 3;*/
+    line-height: 35px;
+    font-weight: bolder;
 }
