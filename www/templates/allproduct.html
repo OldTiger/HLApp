@@ -1,35 +1,32 @@
-<ion-view view-title="所有产品" >
-    <ion-content>
-        <div class="categories row row-no-padding">
-            <span class="category col col-19 text-center ">长毛绒</span>
-            <span class="category col col-19 text-center">长毛绒</span>
-            <span class="category col col-19 text-center">长毛绒</span>
-            <span class="category col col-19 text-center">长毛绒</span>
-            <a class="category selected-category col col-19 text-center">长毛绒</a>
-            <span class="more-categories ion-chevron-down col col-5 text-center"></span>
-        </div>
-        <div class="row">
-            <div class="col-50">
-                <div class="list card half-card">
-                    <div class="item item-image">
-                        <img src="http://ecx.images-amazon.com/images/I/41D5vU4I1NL.jpg">
-                    </div>
-                    <a class="item item-icon-left assertive" href="#">
-                        <i class="icon ion-music-note"></i> Start listening
-                    </a>
-                </div>
+<ion-view view-title="所有产品">
+    <ion-content scrollbar-y="false">
+        <div class="all-categories hide-animation all-categories-show-hide" ng-show="allProduct.data.showAllCategoriesFlag">
+            <div class="categories row row-no-padding" ng-click="allProduct.data.showAllCategoriesFlag=false">
+                <span class=" ">全部分类</span>
+                <a class="ion-chevron-up"></a>
             </div>
-            <div class="col-50">
-                <div class="list card half-card">
+            <div class="categories row row-no-padding">
+                <a class="category col col-25 text-center" ng-class="{true:'selected-category'}[$index==allProduct.data.activeIndex]" ng-click="allProduct.action.activeInAllCategories($index);" ng-repeat="item in allProduct.data.categories">{{item.name}}</a>
+            </div>
+        </div>
+        <div class="categories row row-no-padding">
+            <a class="category col col-19 text-center" ng-class="{true:'selected-category'}[item.id==allProduct.data.activeID]" ng-click="allProduct.action.active(item.id);" ng-repeat="item in allProduct.data.categories |limitTo:5:allProduct.data.activeIndex-(allProduct.data.activeIndex%5)">{{item.name}}</a>
+            <a class="more-categories ion-chevron-down col col-5 text-center" ng-click="allProduct.data.showAllCategoriesFlag=true"></a>
+        </div>
+        <div class="row wrap">
+            <div class="col-50  box" ng-repeat="item in allProduct.data.products">
+                <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
-                        <img src="http://ecx.images-amazon.com/images/I/41D5vU4I1NL.jpg">
+                        <img src="{{item.pic}}">
                     </div>
                     <div class="item product-footer">
-                        <span class="product-title">产品1</span>
-                        <span class="product-price">299</span>
+                        <span class="product-title">{{item.name}}</span>
+                        <span class="product-price">{{item.price}}</span>
                     </div>
                 </div>
             </div>
         </div>
+        <ion-infinite-scroll ng-if="allProduct.action.canBeLoaded()" on-infinite="allProduct.action.loadMore()" immediate-check="false" distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>

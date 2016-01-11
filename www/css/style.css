@@ -99,12 +99,12 @@ home page background color
 }
 
 .product-footer {
-    padding: 7px;
+    padding: 0px;
 }
 
 .product-title {
     display: block;
-    font-size: 1.15em;
+    font-size: 0.5em;
     text-align: center;
     font-weight: bolder;
 }
@@ -112,13 +112,16 @@ home page background color
 .product-price {
     text-align: center;
     color: #ACAEBF;
-    font-size: 0.9em;
+    font-size: 0.5em;
     display: block;
 }
 
-.categories {
-    height: 35px;
-    border: 1px solid #F0F1F1;
+.product {
+    height: 240px;
+}
+
+.list:last-child.card {
+    margin-bottom: 0px;
 }
 
 .col-19 {
@@ -133,12 +136,12 @@ home page background color
 
 .col-5 {
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 5%;
+    -webkit-flex: 0 0 15%;
     -moz-box-flex: 0;
-    -moz-flex: 0 0 5%;
-    -ms-flex: 0 0 5%;
-    flex: 0 0 5%;
-    max-width: 5%;
+    -moz-flex: 0 0 15%;
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    max-width: 15%;
 }
 
 .category,
@@ -146,30 +149,165 @@ home page background color
     color: #999;
 }
 
+.categories {
+    height: 35px;
+}
+
 .categories > .category {
-    /*  display: inline-block;
-  width: 19%;
-  height: 100%;
-  color: #393A3A;
-  text-align: center;
-  font-weight: bolder;*/
+    height: 35px;
     line-height: 35px;
     font-size: small;
     font-weight: 500;
+    border-bottom: 1px solid #F0F1F1;
 }
 
 .selected-category {
     color: #66B0D6;
-    border-bottom: 3px solid #66B0D6;
+    border-bottom: 3px solid #66B0D6 !important;
 }
 
 .more-categories {
-    /*text-align: center;
-  display: inline-block;
-  color: #D5D5D6;
-  width:1%;
-  height: 100%;
-  line-height: 3;*/
     line-height: 35px;
     font-weight: bolder;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.all-categories {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    background-color: white;
+}
+
+.all-categories-show-hide {
+    -webkit-transition: all linear 0.2s;
+    transition: all linear 0.2s;
+    -moz-transition: all linear 0.2s;
+}
+
+.all-categories-show-hide.ng-hide {
+    opacity: 0;
+}
+
+.row + .row {
+    margin-top: 0px;
+}
+
+.all-categories> .categories > .category {
+    border-right: 1px solid #F0F1F1;
+}
+
+.all-categories > .categories:first-child {
+    line-height: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #EEEEEE;
+    justify-content: space-between;
+}
+
+.all-categories > .categories:nth-child(2) {
+    height: auto;
+    flex-wrap: wrap;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.detail-img-box {
+    border-radius: 7px 7px 0 0;
+    width: 100%;
+    -webkit-box-shadow: #666 1px 0px 1px;
+    -moz-box-shadow: #666 1px 0px 1px;
+    box-shadow: #666 1px 0px 1px;
+    padding: 13px 13px 0px 13px;
+    height: 250px;
+}
+
+.detail-content-box {
+    border-radius: 0 0 7px 7px;
+    margin: 0px 13px 0px 13px;
+    background-color: #F9F9F9;
+    -webkit-box-shadow: #666 1px 1px 1px;
+    -moz-box-shadow: #666 1px 1px 1px;
+    box-shadow: #666 1px 1px 1px;
+}
+
+.detail-content-box > p {}
+
+.detail-title {
+    height: 55px;
+    width: 100%;
+    padding: 10px;
+}
+
+.detail-product-name {
+    display: inline-block;
+    padding-left: 5px;
+    color: #636364;
+    margin-right: 112px;
+    height: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.detail-product-price {
+    display: inline-block;
+    height: 100%;
+    line-height: 29px;
+    padding: 3px 15px 3px 15px;
+    background-color: #c0bec3;
+}
+
+.detail-list {
+    padding-left: 10px;
+}
+
+.detail-list >li {
+    font-size: 13px;
+    line-height: 25px;
+}
+
+.detial-color {
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+.detail-content-list {}
+
+.col-15 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 15%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 15%;
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+
+.col-85 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 85%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 85%;
+    -ms-flex: 0 0 85%;
+    flex: 0 0 85%;
+    max-width: 85%;
+}
+
+.over-hide {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.new-producut-header {
+    padding-left: 10px;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #a9a9a9;
+}
+.fix-top{
+    margin-top: -9px;
 }

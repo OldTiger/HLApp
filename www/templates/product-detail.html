@@ -1,0 +1,77 @@
+<ion-view view-title="产品详情" class="app-background">
+    <!-- <ion-nav-title class="stable">
+        <i class="hl-icon-brand"></i>&nbsp;&nbsp;豪隆毛绒
+    </ion-nav-title> -->
+    <ion-content>
+        <div>
+            <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
+                <!--                 <ion-slide ng-repeat="item in productDetail.data.detail.colors">
+ -->
+                <ion-slide class="">
+                        <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                        </img>
+                </ion-slide>
+                <ion-slide class="">
+                        <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                        </img>
+                </ion-slide>
+            </ion-slide-box>
+            <article class="detail-content-box">
+                <p class="detail-title light-bg row">
+                    <span class="detail-product-name over-hide">
+                        {{productDetail.data.detail.name}}
+                    </span>
+                    <span class="detail-product-price light">
+                        ￥{{productDetail.data.detail.price}}
+                    </span>
+                </p>
+                <p class="detail-content-list">
+                    <ul class="detail-list">
+                        <li class="row row-no-padding">
+                            <span class="col col-25">颜色:</span>
+                            <span class="col col-75">
+                                <i class="ion-stop icon detial-color" hl-color="{{item.color}}" ng-repeat="item in productDetail.data.detail.colors"></i>
+                            </span>
+                        </li>
+                        <li class="row  row-no-padding">
+                            <span class="col col-25">成分:</span>
+                            <span class="col col-75">
+                                  {{productDetail.data.detail.components}}
+                            </span>
+                        </li>
+                        <li class="row  row-no-padding">
+                            <span class="col col-25">纱支:</span>
+                            <span class="col col-75">
+                                 {{productDetail.data.detail.yarn}}
+                            </span>
+                        </li>
+                        <li class="row  row-no-padding">
+                            <span class="col col-25">克重:</span>
+                            <span class="col col-75">
+                                 {{productDetail.data.detail.weight}}
+                            </span>
+                        </li>
+                        <li class="row  row-no-padding">
+                            <span class="col col-25">幅宽:</span>
+                            <span class="col col-75">
+                                  {{productDetail.data.detail.width}}
+                            </span>
+                        </li>
+                        <li class="row  row-no-padding">
+                            <span class="col col-25">具体用途:</span>
+                            <span class="col col-75">
+                                 {{productDetail.data.detail.usages}}
+                            </span>
+                        </li>
+                        <li class="row row-no-padding">
+                            <span class="col col-25">染织工艺:</span>
+                            <span class="col col-75">
+                                其他 
+                            </span>
+                        </li>
+                    </ul>
+                </p>
+            </article>
+        </div>
+    </ion-content>
+</ion-view>

@@ -23,35 +23,37 @@
         <div class="list list-inset shawdow">
             <label class="item item-input">
                 &nbsp;<i class="icon ion-search placeholder-icon"></i>
-                <input type="text" placeholder="搜索">
+                <input type="text" placeholder="搜索" ui-sref="search">
             </label>
         </div>
         <!-- end search bar -->
         <div class="row">
             <div class="col col-33 col-offset-33 text-center border-top-bottom">热销商品</div>
         </div>
-        <div class="row">
-            <div class="col-50">
-                <div class="list card half-card">
+        <div class="row wrap">
+            <div class="col-50  box" ng-repeat="item in home.data.products">
+                <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
-                        <img src="http://ecx.images-amazon.com/images/I/41D5vU4I1NL.jpg">
-                    </div>
-                    <a class="item item-icon-left assertive" href="#">
-                        <i class="icon ion-music-note"></i> Start listening
-                    </a>
-                </div>
-            </div>
-            <div class="col-50">
-                <div class="list card half-card">
-                    <div class="item item-image">
-                        <img src="http://ecx.images-amazon.com/images/I/41D5vU4I1NL.jpg">
+                        <img src="{{item.pic}}">
                     </div>
                     <div class="item product-footer">
-                        <span class="product-title">产品1</span>
-                        <span class="product-price">299</span>
+                        <span class="product-title">{{item.name}}</span>
+                        <span class="product-price">{{item.price}}</span>
                     </div>
                 </div>
             </div>
         </div>
+        <ion-infinite-scroll ng-if="home.action.canBeLoaded()" on-infinite="home.action.loadMore()" immediate-check="false" distance="1%">
+        </ion-infinite-scroll>
     </ion-content>
 </ion-view>
+<script id="my-popover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-header-bar>
+      <h1 class="title">My Popover Title</h1>
+    </ion-header-bar>
+    <ion-content>
+      Hello!
+    </ion-content>
+  </ion-popover-view>
+</script>

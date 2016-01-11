@@ -12,12 +12,17 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             url: '/tabs',
             templateUrl: 'templates/tabs.html'
         })
+        .state('search', {
+            url: '/search',
+            templateUrl: 'templates/search.html',
+            controller: "searchCtrl as search"
+        })
         .state('tabs.homepage', {
             url: '/homepage',
             views: {
                 'homepage-tab': {
                     templateUrl: 'templates/homepage.html',
-                    controllers: ''
+                    controller: 'homeCtrl as home'
                 }
             }
         })
@@ -31,11 +36,11 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             }
         })
         .state('tabs.allproduct', {
-            url: '/allproduct',
+            url: '/all-product',
             views: {
                 'allproduct-tab': {
                     templateUrl: 'templates/allproduct.html',
-                    controllers: ''
+                    controller: 'allProductCtrl as allProduct'
                 }
             }
         })
@@ -47,6 +52,15 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
                     controllers: ''
                 }
             }
+        })
+        .state('tabs.productDetail', {
+            url: '/product-detail/:id',
+            views: {
+                'allproduct-tab': {
+                    templateUrl: 'templates/product-detail.html',
+                    controller: 'productDetailCtrl as productDetail'
+                }
+            }
         });
-    $urlRouterProvider.otherwise('/tabs/homepage');
+    $urlRouterProvider.otherwise('/tabs/all-product');
 })

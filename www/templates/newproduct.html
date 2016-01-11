@@ -1,3 +1,84 @@
 <ion-view view-title="新品">
-	<ion-content>2</ion-content>
+    <ion-content class="app-background">
+        <section>
+            <article>
+                <header class="new-producut-header">2015年12月31日</header>
+                <section class="row wrap row-no-padding fix-top">
+                    <!-- <div class="col-50 " ng-repeat="item in home.data.products">
+                        <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})">
+                            <div class="item item-image">
+                                <img src="{{item.pic}}">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title">{{item.name}}</span>
+                                <span class="product-price">{{item.price}}</span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-50 ">
+                        <div class="list card half-card">
+                            <div class="item item-image">
+                                <img src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title ng-binding">19-毛绒44毛绒44，奔测试</span>
+                                <span class="product-price ng-binding">20.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50 ">
+                        <div class="list card half-card">
+                            <div class="item item-image">
+                                <img src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title ng-binding">19-毛绒44毛绒44，奔测试</span>
+                                <span class="product-price ng-binding">20.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+            <article>
+                <header class="new-producut-header">2015年12月31日</header>
+                <section class="row wrap row-no-padding fix-top">
+                    <!-- <div class="col-50 " ng-repeat="item in home.data.products">
+                        <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})">
+                            <div class="item item-image">
+                                <img src="{{item.pic}}">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title">{{item.name}}</span>
+                                <span class="product-price">{{item.price}}</span>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-50 ">
+                        <div class="list card half-card">
+                            <div class="item item-image">
+                                <img src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title ng-binding">19-毛绒44毛绒44，奔测试</span>
+                                <span class="product-price ng-binding">20.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-50 ">
+                        <div class="list card half-card">
+                            <div class="item item-image">
+                                <img src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                            </div>
+                            <div class="item product-footer">
+                                <span class="product-title ng-binding">19-毛绒44毛绒44，奔测试</span>
+                                <span class="product-price ng-binding">20.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </section>
+        <ion-infinite-scroll ng-if="home.action.canBeLoaded()" on-infinite="home.action.loadMore()" immediate-check="false" distance="1%">
+        </ion-infinite-scroll>
+    </ion-content>
 </ion-view>
