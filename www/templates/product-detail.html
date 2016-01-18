@@ -1,19 +1,20 @@
-<ion-view view-title="产品详情" class="app-background">
-    <!-- <ion-nav-title class="stable">
-        <i class="hl-icon-brand"></i>&nbsp;&nbsp;豪隆毛绒
-    </ion-nav-title> -->
+<ion-view view-title="产品详情" class="app-background" hide-back-button="true">
+    <ion-nav-buttons side="left">
+      <button class="button icon ion-chevron-left" ng-click="productDetail.action.goBack()">
+      </button>
+    </ion-nav-buttons>
     <ion-content>
         <div>
             <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
                 <!--                 <ion-slide ng-repeat="item in productDetail.data.detail.colors">
  -->
                 <ion-slide class="">
-                        <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
-                        </img>
+                    <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                    </img>
                 </ion-slide>
                 <ion-slide class="">
-                        <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
-                        </img>
+                    <img class="detail-img-box" src="http://192.168.0.111:8080/images/B53CFA15-FC0A-4388-BD34-951E03AA7966.png">
+                    </img>
                 </ion-slide>
             </ion-slide-box>
             <article class="detail-content-box">

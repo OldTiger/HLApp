@@ -15,7 +15,7 @@
         </div>
         <div class="row wrap">
             <div class="col-50  box" ng-repeat="item in allProduct.data.products">
-                <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})" >
+                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
                         <img src="{{item.pic}}">
                     </div>

@@ -32,7 +32,7 @@
         </div>
         <div class="row wrap">
             <div class="col-50  box" ng-repeat="item in home.data.products">
-                <div class="list card half-card" ui-sref="tabs.productDetail({ id: {{item.id}}})" >
+                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
                         <img src="{{item.pic}}">
                     </div>
@@ -47,13 +47,3 @@
         </ion-infinite-scroll>
     </ion-content>
 </ion-view>
-<script id="my-popover.html" type="text/ng-template">
-  <ion-popover-view>
-    <ion-header-bar>
-      <h1 class="title">My Popover Title</h1>
-    </ion-header-bar>
-    <ion-content>
-      Hello!
-    </ion-content>
-  </ion-popover-view>
-</script>

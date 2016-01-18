@@ -31,7 +31,7 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             views: {
                 'newproduct-tab': {
                     templateUrl: 'templates/newproduct.html',
-                    controllers: ''
+                    controller: 'newProductCtrl as newProduct'
                 }
             }
         })
@@ -49,18 +49,15 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             views: {
                 'contact-tab': {
                     templateUrl: 'templates/contact.html',
-                    controllers: ''
+                    controller: 'chatCtrl as chat'
                 }
             }
         })
-        .state('tabs.productDetail', {
+        .state('productDetail', {
             url: '/product-detail/:id',
-            views: {
-                'allproduct-tab': {
-                    templateUrl: 'templates/product-detail.html',
-                    controller: 'productDetailCtrl as productDetail'
-                }
-            }
+            templateUrl: 'templates/product-detail.html',
+            controller: 'productDetailCtrl as productDetail'
+
         });
-    $urlRouterProvider.otherwise('/tabs/all-product');
+    $urlRouterProvider.otherwise('/tabs/contact');
 })

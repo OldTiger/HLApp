@@ -74,17 +74,20 @@ app.controller('allProductCtrl', function($scope, HLService) {
         }
         init();
     })
-    .controller('productDetailCtrl', function($stateParams, $scope, HLService) {
+    .controller('productDetailCtrl', function($stateParams, $scope, HLService, $ionicHistory) {
         var productDetail = this;
         productDetail.data = {
             id: $stateParams.id,
             detail: {}
         };
+        productDetail.action = {
+            goBack: function() {
+                $ionicHistory.goBack();
+            }
+        }
         var request = function getProduct(id) {
             HLService.get("products/detailProJson?id=" + productDetail.data.id, function(data) {
                 productDetail.data.detail = data.products;
-                console.log(productDetail.data.detail);
-
             })
         }
         request();
@@ -103,9 +106,6 @@ app.controller('allProductCtrl', function($scope, HLService) {
                     home.data.canLoadMore = false;
                 }
                 home.data.products = home.data.products.concat(data.products);
-                home.data.products.forEach(function(element) {
-                    console.log(element.id);
-                })
             }
         };
         var request = function() {
@@ -116,7 +116,6 @@ app.controller('allProductCtrl', function($scope, HLService) {
                 productId = home.data.products[length - 1].id;
             }
             var param = "id=" + productId + "&max=8" + "&dateasc=0";
-            console.log(param);
             HLService.get("products/homeProJson?" + param, callback.getProductCallback);
         };
         home.data = {
@@ -159,6 +158,79 @@ app.controller('allProductCtrl', function($scope, HLService) {
                 }
             }
         }
+    })
+    .controller('newProductCtrl', function($scope, HLService) {
+        var newProduct = this;
+        var callback = {
+            getProductCallback: function(data) {
+                var productId, length = newProduct.data.products.length;
+                if (length == 0) {
+                    productId = -1;
+                } else {
+                    productId = newProduct.data.products[length - 1].id;
+                }
+                if (data.products.length == 0 || productId == data.products[0].id) {
+                    newProduct.data.canLoadMore = false;
+                }
+                newProduct.data.products = newProduct.data.products.concat(data.products);
+
+                data.products.forEach(function(element) {
+                    if (newProduct.data.dates[element.createdate] == undefined) {
+                        newProduct.data.dates[element.createdate] = [];
+                    }
+                    newProduct.data.dates[element.createdate].push(element);
+                });
+            }
+        };
+        var request = function() {
+            var productId, length = newProduct.data.products.length;
+            if (length == 0) {
+                productId = -1;
+            } else {
+                productId = newProduct.data.products[length - 1].id;
+            }
+            var param = "id=" + productId + "&max=8" + "&dateasc=0";
+            HLService.get("products/newProJson?" + param, callback.getProductCallback);
+        };
+        newProduct.data = {
+            products: [],
+            dates: {},
+            canLoadMore: true
+        };
+        newProduct.action = {
+            loadMore: function() {
+                request();
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            },
+            canBeLoaded: function() {
+                return newProduct.data.canLoadMore;
+            }
+        };
+        request();
+    })
+    .controller('chatCtrl', function($scope, HLService) {
+        // var chat = this;
+        // var jqLite = angular.element;
+
+        // chat.action = {
+        //     getIframe: function() {
+        //         var top = document.getElementsByTagName('iframe');
+        //         var firstIframe = top.document.getElementsByTagName('iframe')[0].contentWindow.document;
+        //         var secondIframe = firstIframe.getElementsByTagName('iframe')[0].contentWindow;
+        //         var supportHolder = secondIframe.document.getElementsByClassName('support-holder');
+        //         var footer = secondIframe.document.getElementsByClassName('footer');
+        //         jqLite(footer).css({
+        //             'height': '50px'
+        //         });
+        //     }
+
+        // }
+        // window.onload = function() {
+        //     console.log('ready');
+        //     var top = document.getElementsByTagName('iframe');
+        //     var element = top.document.getElementsByTagName('iframe')[0];
+        //     element.onload = chat.action.getIframe();
+        // }
     })
     .directive('hlColor', function() {
         return {
