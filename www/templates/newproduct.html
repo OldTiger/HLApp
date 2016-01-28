@@ -1,5 +1,5 @@
 <ion-view view-title="新品">
-    <ion-content class="app-background">
+    <ion-content class="app-background" on-scroll="newProduct.action.getTop()">
         <section>
             <article ng-repeat="(date, products) in newProduct.data.dates">
                 <header class="new-producut-header">{{date}}</header>
@@ -7,11 +7,11 @@
                     <div class="col-50 " ng-repeat="item in products">
                         <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})">
                             <div class="item item-image">
-                                <img src="{{item.pic}}">
+                                <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                             </div>
                             <div class="item product-footer">
                                 <span class="product-title">{{item.name}}</span>
-                                <span class="product-price">{{item.price}}</span>
+                                <span class="product-price">￥{{item.price}}</span>
                             </div>
                         </div>
                     </div>
@@ -21,4 +21,7 @@
         <ion-infinite-scroll ng-if="newProduct.action.canBeLoaded()" on-infinite="newProduct.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
+    <section class="go-to-top">
+        <span class="icon ion-android-arrow-up light-bg  basic-color show" ng-click="newProduct.action.scrollTop()" ng-show="newProduct.data.top>500"></span>
+    </section>
 </ion-view>

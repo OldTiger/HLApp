@@ -1,4 +1,4 @@
-app.controller('allProductCtrl', function($scope, HLService) {
+app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegate) {
         var allProduct = this;
         var callback = {
             getCategoriesCallback: function(data) {
@@ -58,6 +58,13 @@ app.controller('allProductCtrl', function($scope, HLService) {
             },
             canBeLoaded: function() {
                 return allProduct.data.canLoadMore;
+            },
+            scrollTop: function() {
+                $ionicScrollDelegate.scrollTop(true);
+            },
+            getTop: function() {
+                allProduct.data.top = $ionicScrollDelegate.getScrollPosition().top;
+                $scope.$apply();
             }
         }
         allProduct.data = {
@@ -66,7 +73,8 @@ app.controller('allProductCtrl', function($scope, HLService) {
             activeIndex: 0,
             categories: [],
             products: [],
-            canLoadMore: true
+            canLoadMore: true,
+            top: 0
         };
 
         function init() {
@@ -74,7 +82,7 @@ app.controller('allProductCtrl', function($scope, HLService) {
         }
         init();
     })
-    .controller('productDetailCtrl', function($stateParams, $scope, HLService, $ionicHistory) {
+    .controller('productDetailCtrl', function($stateParams, $scope, HLService, $ionicHistory, $ionicSlideBoxDelegate) {
         var productDetail = this;
         productDetail.data = {
             id: $stateParams.id,
@@ -83,6 +91,9 @@ app.controller('allProductCtrl', function($scope, HLService) {
         productDetail.action = {
             goBack: function() {
                 $ionicHistory.goBack();
+            },
+            updateSlide: function() {
+                $ionicSlideBoxDelegate.update();
             }
         }
         var request = function getProduct(id) {
@@ -92,7 +103,7 @@ app.controller('allProductCtrl', function($scope, HLService) {
         }
         request();
     })
-    .controller('homeCtrl', function($scope, HLService) {
+    .controller('homeCtrl', function($scope, HLService, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
         var home = this;
         var callback = {
             getProductCallback: function(data) {
@@ -106,6 +117,12 @@ app.controller('allProductCtrl', function($scope, HLService) {
                     home.data.canLoadMore = false;
                 }
                 home.data.products = home.data.products.concat(data.products);
+            },
+            getSlideCallback: function(data) {
+                home.data.slides = data.wheelImages;
+                data.wheelImages.forEach(function(element){
+                    element.isProId = !isNaN(Number(element.url));
+                });
             }
         };
         var request = function() {
@@ -118,20 +135,35 @@ app.controller('allProductCtrl', function($scope, HLService) {
             var param = "id=" + productId + "&max=8" + "&dateasc=0";
             HLService.get("products/homeProJson?" + param, callback.getProductCallback);
         };
+        var requestSlide = function() {
+            HLService.get("/home/wheelImageJson", callback.getSlideCallback);
+        }
         home.data = {
             products: [],
-            canLoadMore: true
+            canLoadMore: true,
+            top: 0
         };
         home.action = {
+            updateSlide: function() {
+                $ionicSlideBoxDelegate.update();
+            },
             loadMore: function() {
                 request();
                 $scope.$broadcast('scroll.infiniteScrollComplete');
             },
             canBeLoaded: function() {
                 return home.data.canLoadMore;
+            },
+            scrollTop: function() {
+                $ionicScrollDelegate.scrollTop(true);
+            },
+            getTop: function() {
+                home.data.top = $ionicScrollDelegate.getScrollPosition().top;
+                $scope.$apply();
             }
         };
         request();
+        requestSlide();
         // .fromTemplate() method
     })
     .controller('searchCtrl', function($scope, HLService, $ionicHistory) {
@@ -159,7 +191,7 @@ app.controller('allProductCtrl', function($scope, HLService) {
             }
         }
     })
-    .controller('newProductCtrl', function($scope, HLService) {
+    .controller('newProductCtrl', function($scope, $ionicScrollDelegate, HLService) {
         var newProduct = this;
         var callback = {
             getProductCallback: function(data) {
@@ -195,7 +227,8 @@ app.controller('allProductCtrl', function($scope, HLService) {
         newProduct.data = {
             products: [],
             dates: {},
-            canLoadMore: true
+            canLoadMore: true,
+            top: 0
         };
         newProduct.action = {
             loadMore: function() {
@@ -204,9 +237,33 @@ app.controller('allProductCtrl', function($scope, HLService) {
             },
             canBeLoaded: function() {
                 return newProduct.data.canLoadMore;
+            },
+            formatDate: function(str) {
+                var date = new Date(str);
+                var day = date.getDate();
+                var month = date.getMonth();
+                var year = date.getYear();
+            },
+            scrollTop: function() {
+                $ionicScrollDelegate.scrollTop(true);
+            },
+            getTop: function() {
+                newProduct.data.top = $ionicScrollDelegate.getScrollPosition().top;
+                $scope.$apply();
             }
         };
         request();
+    })
+    .controller('slideHrefCtrl', function($scope, HLService, $ionicHistory, $stateParams, $sce) {
+        var slideHref = this;
+        slideHref.data = {
+            url: $sce.trustAsResourceUrl($stateParams.url)
+        }
+        slideHref.action = {
+             goBack: function() {
+                $ionicHistory.goBack();
+            }
+        }
     })
     .controller('chatCtrl', function($scope, HLService) {
         // var chat = this;

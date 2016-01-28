@@ -2,20 +2,12 @@
     <ion-nav-title class="stable">
         <i class="hl-icon-brand"></i>&nbsp;&nbsp;豪隆毛绒
     </ion-nav-title>
-    <ion-content>
+    <ion-content on-scroll="home.action.getTop()">
         <!-- slide-box begin -->
-        <ion-slide-box on-slide-changed="slideHasChanged($index)" auto-play="true">
-            <ion-slide>
-                <div class="box blue">
-                    <h1>BLUE</h1></div>
-            </ion-slide>
-            <ion-slide>
-                <div class="box yellow">
-                    <h1>YELLOW</h1></div>
-            </ion-slide>
-            <ion-slide>
-                <div class="box pink">
-                    <h1>PINK</h1></div>
+        <ion-slide-box auto-play="true" does-continue="true" on-slide-changed="home.action.updateSlide()">
+            <ion-slide ng-repeat="slide in home.data.slides">
+                <img ng-src="{{slide.pic!='false'?slide.pic:'img/noimg.png'}}" class="width-100 box" ui-sref="slideHref({url:'{{slide.url}}'})" ng-if="!slide.isProId">
+                <img ng-src="{{slide.pic!='false'?slide.pic:'img/noimg.png'}}" class="width-100 box" ui-sref="productDetail({ id: '{{slide.url}}'})" ng-if="slide.isProId">
             </ion-slide>
         </ion-slide-box>
         <!-- slide-box end -->
@@ -34,11 +26,11 @@
             <div class="col-50  box" ng-repeat="item in home.data.products">
                 <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
-                        <img src="{{item.pic}}">
+                        <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
                     <div class="item product-footer">
                         <span class="product-title">{{item.name}}</span>
-                        <span class="product-price">{{item.price}}</span>
+                        <span class="product-price">￥{{item.price}}</span>
                     </div>
                 </div>
             </div>
@@ -46,4 +38,7 @@
         <ion-infinite-scroll ng-if="home.action.canBeLoaded()" on-infinite="home.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
+    <section class="go-to-top">
+        <span class="icon ion-android-arrow-up light-bg  basic-color show" ng-click="home.action.scrollTop()" ng-show="home.data.top>500"></span>
+    </section>
 </ion-view>

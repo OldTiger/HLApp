@@ -58,6 +58,17 @@ app.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
             templateUrl: 'templates/product-detail.html',
             controller: 'productDetailCtrl as productDetail'
 
+        })
+        .state('slideHref', {
+            url: '/slide-href?url',
+            templateUrl: 'templates/slide-href.html',
+            controller: 'slideHrefCtrl as slideHref'
+
+        })
+        .state('introduce', {
+            url: '/introduce',
+            templateUrl: "templates/introduce.html",
         });
-    $urlRouterProvider.otherwise('/tabs/contact');
+     $urlRouterProvider.otherwise('/tabs/homepage');
+      //  $urlRouterProvider.otherwise('/introduce');
 })

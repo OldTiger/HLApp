@@ -8205,8 +8205,13 @@ ionic.views.Slider = ionic.views.View.inherit({
       length = slides.length;
 
       // set continuous to false if only one slide
-      if (slides.length < 2) options.continuous = false;
-
+      if (slides.length < 2) {
+        options.initialContinuous = options.continuous;
+        options.continuous = false;
+      } else if (options.initialContinuous) {
+        //if original  continuous is true, recover it
+        options.continuous = options.initialContinuous;
+      }
       //special case if two slides
       if (browser.transitions && options.continuous && slides.length < 3) {
         element.appendChild(slides[0].cloneNode(true));
@@ -11499,7 +11504,7 @@ ionic.views.Slider = ionic.views.View.inherit({
                     i1 = i3 - 1;
 
                     // We have our indexes i1 & i3, so we can calculate already:
-                    // y2 := ((x2−x1) × (y3−y1)) ÷ (x3−x1) + y1
+                    // y2 := ((x2鈭抶1) 脳 (y3鈭抷1)) 梅 (x3鈭抶1) + y1
                     return ((x2 - this.x[i1]) * (this.y[i3] - this.y[i1])) / (this.x[i3] - this.x[i1]) + this.y[i1];
                 };
 

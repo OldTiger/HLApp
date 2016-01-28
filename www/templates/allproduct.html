@@ -1,6 +1,6 @@
 <ion-view view-title="所有产品">
-    <ion-content scrollbar-y="false">
-        <div class="all-categories hide-animation all-categories-show-hide" ng-show="allProduct.data.showAllCategoriesFlag">
+    <ion-content scrollbar-y="false" on-scroll="allProduct.action.getTop()">
+        <div class="all-categories" ng-show="allProduct.data.showAllCategoriesFlag">
             <div class="categories row row-no-padding" ng-click="allProduct.data.showAllCategoriesFlag=false">
                 <span class=" ">全部分类</span>
                 <a class="ion-chevron-up"></a>
@@ -10,18 +10,18 @@
             </div>
         </div>
         <div class="categories row row-no-padding">
-            <a class="category col col-19 text-center" ng-class="{true:'selected-category'}[item.id==allProduct.data.activeID]" ng-click="allProduct.action.active(item.id);" ng-repeat="item in allProduct.data.categories |limitTo:5:allProduct.data.activeIndex-(allProduct.data.activeIndex%5)">{{item.name}}</a>
-            <a class="more-categories ion-chevron-down col col-5 text-center" ng-click="allProduct.data.showAllCategoriesFlag=true"></a>
+            <a class="category col col-18 text-center" ng-class="{true:'selected-category'}[item.id==allProduct.data.activeID]" ng-click="allProduct.action.active(item.id);" ng-repeat="item in allProduct.data.categories |limitTo:5:allProduct.data.activeIndex-(allProduct.data.activeIndex%5)">{{item.name}}</a>
+            <a class="more-categories ion-chevron-down col col-10 text-center" ng-click="allProduct.data.showAllCategoriesFlag=true"></a>
         </div>
         <div class="row wrap">
             <div class="col-50  box" ng-repeat="item in allProduct.data.products">
                 <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
                     <div class="item item-image">
-                        <img src="{{item.pic}}">
+                        <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
                     <div class="item product-footer">
                         <span class="product-title">{{item.name}}</span>
-                        <span class="product-price">{{item.price}}</span>
+                        <span class="product-price">￥{{item.price}}</span>
                     </div>
                 </div>
             </div>
@@ -29,4 +29,7 @@
         <ion-infinite-scroll ng-if="allProduct.action.canBeLoaded()" on-infinite="allProduct.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
+    <section class="go-to-top">
+        <span class="icon ion-android-arrow-up light-bg basic-color show" ng-click="allProduct.action.scrollTop()" ng-show="allProduct.data.top>500"></span>
+    </section>
 </ion-view>

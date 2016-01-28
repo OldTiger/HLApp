@@ -9,11 +9,12 @@ icon css
     font-style: normal;
 }
 
-.hl-icon-homepage:before,
+.hl-icon-homepage,
 .hl-icon-newproduct,
 .hl-icon-allproduct,
 .hl-icon-brand,
-.hl-icon-contact {
+.hl-icon-contact,
+.hl-icon-go-top {
     display: inline-block;
     font-family: "HLicons";
     speak: none;
@@ -45,6 +46,10 @@ icon css
 
 .hl-icon-contact:before {
     content: "D";
+}
+
+.hl-icon-go-top:before {
+    content: "F";
 }
 
 
@@ -104,15 +109,14 @@ home page background color
 
 .product-title {
     display: block;
-    font-size: 0.5em;
+    font-size: 0.7em;
     text-align: center;
-    font-weight: bolder;
 }
 
 .product-price {
     text-align: center;
     color: #ACAEBF;
-    font-size: 0.5em;
+    font-size: 0.7em;
     display: block;
 }
 
@@ -124,24 +128,24 @@ home page background color
     margin-bottom: 0px;
 }
 
-.col-19 {
+.col-18 {
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 19%;
+    -webkit-flex: 0 0 18%;
     -moz-box-flex: 0;
-    -moz-flex: 0 0 19%;
-    -ms-flex: 0 0 19%;
-    flex: 0 0 19%;
-    max-width: 19%;
+    -moz-flex: 0 0 18%;
+    -ms-flex: 0 0 18%;
+    flex: 0 0 18%;
+    max-width: 18%;
 }
 
 .col-5 {
     -webkit-box-flex: 0;
-    -webkit-flex: 0 0 15%;
+    -webkit-flex: 0 0 10%;
     -moz-box-flex: 0;
-    -moz-flex: 0 0 15%;
-    -ms-flex: 0 0 15%;
-    flex: 0 0 15%;
-    max-width: 15%;
+    -moz-flex: 0 0 10%;
+    -ms-flex: 0 0 10%;
+    flex: 0 0 10%;
+    max-width: 10%;
 }
 
 .category,
@@ -151,6 +155,7 @@ home page background color
 
 .categories {
     height: 35px;
+    border-bottom: 1px solid #F0F1F1;
 }
 
 .categories > .category {
@@ -158,7 +163,6 @@ home page background color
     line-height: 35px;
     font-size: small;
     font-weight: 500;
-    border-bottom: 1px solid #F0F1F1;
 }
 
 .selected-category {
@@ -178,12 +182,6 @@ home page background color
     width: 100%;
     z-index: 3;
     background-color: white;
-}
-
-.all-categories-show-hide {
-    -webkit-transition: all linear 0.2s;
-    transition: all linear 0.2s;
-    -moz-transition: all linear 0.2s;
 }
 
 .all-categories-show-hide.ng-hide {
@@ -216,18 +214,20 @@ home page background color
 }
 
 .detail-img-box {
-    border-radius: 7px 7px 0 0;
+    /*    border-radius: 7px 7px 0 0;
+*/
     width: 100%;
     -webkit-box-shadow: #666 1px 0px 1px;
     -moz-box-shadow: #666 1px 0px 1px;
     box-shadow: #666 1px 0px 1px;
-    padding: 13px 13px 0px 13px;
+    /*    padding: 13px 13px 0px 13px;
+*/
     height: 250px;
 }
 
 .detail-content-box {
-    border-radius: 0 0 7px 7px;
-    margin: 0px 13px 0px 13px;
+    /*border-radius: 0 0 7px 7px;
+    margin: 0px 13px 0px 13px;*/
     background-color: #F9F9F9;
     -webkit-box-shadow: #666 1px 1px 1px;
     -moz-box-shadow: #666 1px 1px 1px;
@@ -240,13 +240,14 @@ home page background color
     height: 55px;
     width: 100%;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .detail-product-name {
     display: inline-block;
-    padding-left: 5px;
+    /*    padding-left: 5px;
+*/
     color: #636364;
-    margin-right: 112px;
     height: 100%;
     line-height: 35px;
     font-size: 16px;
@@ -257,11 +258,12 @@ home page background color
     height: 100%;
     line-height: 29px;
     padding: 3px 15px 3px 15px;
-    background-color: #c0bec3;
+    background-color: #e4393c;
 }
 
 .detail-list {
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .detail-list >li {
@@ -308,6 +310,63 @@ home page background color
     font-size: 14px;
     color: #a9a9a9;
 }
-.fix-top{
+
+.fix-top {
     margin-top: -9px;
+}
+
+.all-product-img-size {
+    height: 129px;
+}
+
+.go-to-top {
+    position: absolute;
+    bottom: 67px;
+    right: 10px;
+    z-index: 999;
+}
+
+.go-to-top span {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.ch-font {
+    font-family: "Arial", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+}
+
+.full-screen {
+    height: 100%;
+    width: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.begin-button {
+    bottom: 10%;
+    position: absolute;
+    width: 70%;
+    left: 15%
+}
+
+.splash {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+}
+
+.basic-color {
+    color: #66afd5;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
 }
