@@ -1,5 +1,7 @@
 <ion-view view-title="新品">
     <ion-content class="app-background" on-scroll="newProduct.action.getTop()">
+    <ion-refresher spinner="android" pulling-text="下拉刷新" on-refresh="newProduct.action.doRefresh()">
+    </ion-refresher>
         <section>
             <article ng-repeat="(date, products) in newProduct.data.dates">
                 <header class="new-producut-header">{{date}}</header>
@@ -18,7 +20,7 @@
                 </section>
             </article>
         </section>
-        <ion-infinite-scroll ng-if="newProduct.action.canBeLoaded()" on-infinite="newProduct.action.loadMore()" immediate-check="false" distance="1%">
+        <ion-infinite-scroll ng-if="newProduct.action.canBeLoaded()" spinner="android" on-infinite="newProduct.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
     <section class="go-to-top">

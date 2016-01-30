@@ -1,8 +1,30 @@
-app.factory('HLService', function($http) {
+app.factory('HLService', function($http, $q, $timeout, $ionicPopup) {
         var factory = {
             server: "http://192.168.0.111:8080/SpinningShop/",
             get: function(name, callback) {
-                $http.get(this.server + name).success(callback);
+                var deferred = $q.defer();
+                $timeout(function() {
+                    deferred.resolve(); // this aborts the request!
+                }, 20000);
+                $http.get(this.server + name, {
+                    timeout: deferred.promise
+                }).then(function(response) {
+                    callback(response.data);
+                }, function(reject) {
+                    // error handler
+                    if (reject.status === 0) {
+                        // $http timeout
+                        var alertPopup = $ionicPopup.alert({
+                            template: '亲，网络好像有点不好哟~',
+                            cssClass: 'custom-popup', // Add
+                        });
+                        $timeout(function() {
+                            alertPopup.close(); //close the popup after 3 seconds for some reason
+                        }, 2000);
+                    } else {
+                        // response error status from server
+                    }
+                });
             },
             put: function(name, data, callback) {
                 $http.put(this.server + name, JSON.stringify(data)).then(callback);
@@ -23,7 +45,7 @@ app.factory('HLService', function($http) {
             restrict: 'A',
             scope: {},
             link: link
-            //templateUrl: "../templates/splash.html"
+                //templateUrl: "../templates/splash.html"
         }
     });
 // .directive('goToTop', function($ionicScrollDelegate) {

@@ -370,3 +370,13 @@ home page background color
     -khtml-opacity: 0.8;
     opacity: 0.8;
 }
+
+.custom-popup .popup-head {
+  display: none;
+}
+.custom-popup .popup-buttons {
+  display: none;
+}
+.custom-popup .popup-body{
+    text-align: center;
+}

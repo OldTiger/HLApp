@@ -17,6 +17,16 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     allProduct.data.canLoadMore = false;
                 }
                 allProduct.data.products = allProduct.data.products.concat(data.products);
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            },
+            resetProductsCallBack: function(data) {
+                var length = data.products.length;
+                var spliceLen = allProduct.data.products.length;
+                //±ÜÃâÏÈ´¥·¢infinite scroll
+                allProduct.data.products = allProduct.data.products.concat(data.products);
+                allProduct.data.products.splice(0, spliceLen);
+                $scope.$broadcast('scroll.refreshComplete');
+                allProduct.data.canLoadMore = true;
             }
         };
         var request = {
@@ -31,7 +41,18 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                 HLService.get(name, callbackFn);
             }
         };
+
+
+        var resetProducts = function() {
+            var productId = -1;
+            var param = "id=" + productId + "&max=8" + "&dateasc=0";
+            allProduct.data.canLoadMore = false;
+            request.getProductsByCategoryId(allProduct.data.activeID, -1, 8, 0, callback.resetProductsCallBack);
+        };
         allProduct.action = {
+            doRefresh: function() {
+                resetProducts();
+            },
             active: function(id) {
                 allProduct.data.activeID = id;
                 allProduct.data.products = [];
@@ -54,7 +75,6 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     productId = allProduct.data.products[length - 1].id;
                 }
                 request.getProductsByCategoryId(allProduct.data.activeID, productId, 8, 0, callback.getProductCallback);
-                $scope.$broadcast('scroll.infiniteScrollComplete');
             },
             canBeLoaded: function() {
                 return allProduct.data.canLoadMore;
@@ -103,7 +123,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
         }
         request();
     })
-    .controller('homeCtrl', function($scope, HLService, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+    .controller('homeCtrl', function($ionicLoading, $scope, HLService, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
         var home = this;
         var callback = {
             getProductCallback: function(data) {
@@ -117,13 +137,29 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     home.data.canLoadMore = false;
                 }
                 home.data.products = home.data.products.concat(data.products);
+                $scope.$broadcast('scroll.infiniteScrollComplete');
             },
             getSlideCallback: function(data) {
                 home.data.slides = data.wheelImages;
-                data.wheelImages.forEach(function(element){
+                data.wheelImages.forEach(function(element) {
                     element.isProId = !isNaN(Number(element.url));
                 });
+            },
+            resetProductsCallBack: function(data) {
+                var length = data.products.length;
+                var spliceLen = home.data.products.length;
+                //±ÜÃâÏÈ´¥·¢infinite scroll
+                home.data.products = home.data.products.concat(data.products);
+                home.data.products.splice(0, spliceLen);
+                $scope.$broadcast('scroll.refreshComplete');
+                home.data.canLoadMore = true;
             }
+        };
+        var resetProducts = function() {
+            var productId = -1;
+            var param = "id=" + productId + "&max=8" + "&dateasc=0";
+            home.data.canLoadMore = false;
+            HLService.get("products/homeProJson?" + param, callback.resetProductsCallBack);
         };
         var request = function() {
             var productId, length = home.data.products.length;
@@ -144,12 +180,14 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             top: 0
         };
         home.action = {
+            doRefresh: function() {
+                resetProducts();
+            },
             updateSlide: function() {
                 $ionicSlideBoxDelegate.update();
             },
             loadMore: function() {
                 request();
-                $scope.$broadcast('scroll.infiniteScrollComplete');
             },
             canBeLoaded: function() {
                 return home.data.canLoadMore;
@@ -212,6 +250,12 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     }
                     newProduct.data.dates[element.createdate].push(element);
                 });
+                $scope.$broadcast('scroll.infiniteScrollComplete');
+            },
+            resetProductsCallBack: function(data) {
+                callback.getProductCallback(data);
+                $scope.$broadcast('scroll.refreshComplete');
+                newProduct.data.canLoadMore = true;
             }
         };
         var request = function() {
@@ -224,6 +268,14 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             var param = "id=" + productId + "&max=8" + "&dateasc=0";
             HLService.get("products/newProJson?" + param, callback.getProductCallback);
         };
+        var resetProducts = function() {
+            var productId = -1;
+            var param = "id=" + productId + "&max=8" + "&dateasc=0";
+            newProduct.data.canLoadMore = false;
+            newProduct.data.products = [];
+            newProduct.data.dates = {};
+            HLService.get("products/newProJson?" + param, callback.resetProductsCallBack);
+        }
         newProduct.data = {
             products: [],
             dates: {},
@@ -231,9 +283,11 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             top: 0
         };
         newProduct.action = {
+            doRefresh: function() {
+                resetProducts();
+            },
             loadMore: function() {
                 request();
-                $scope.$broadcast('scroll.infiniteScrollComplete');
             },
             canBeLoaded: function() {
                 return newProduct.data.canLoadMore;
@@ -260,7 +314,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             url: $sce.trustAsResourceUrl($stateParams.url)
         }
         slideHref.action = {
-             goBack: function() {
+            goBack: function() {
                 $ionicHistory.goBack();
             }
         }

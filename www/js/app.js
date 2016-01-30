@@ -20,10 +20,15 @@ var app = angular.module('starter', ['ionic', 'ngAnimate'])
         if (window.StatusBar) {
             StatusBar.styleDefault();
         }
-        var flag= window.localStorage.getItem('notFirstOpened');
-        if(flag==null||flag==false){
+        var flag = window.localStorage.getItem('notFirstOpened');
+        if (flag == null || flag == false) {
             $location.path('/introduce');
             window.localStorage.setItem('notFirstOpened', true);
+        }
+        if (navigator && navigator.splashscreen) {
+            setTimeout(function() {
+                navigator.splashscreen.hide();
+            }, 500);
         }
     });
 });

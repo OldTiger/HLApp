@@ -3,6 +3,8 @@
         <i class="hl-icon-brand"></i>&nbsp;&nbsp;豪隆毛绒
     </ion-nav-title>
     <ion-content on-scroll="home.action.getTop()">
+        <ion-refresher spinner="android" pulling-text="下拉刷新" on-refresh="home.action.doRefresh()">
+        </ion-refresher>
         <!-- slide-box begin -->
         <ion-slide-box auto-play="true" does-continue="true" on-slide-changed="home.action.updateSlide()">
             <ion-slide ng-repeat="slide in home.data.slides">
@@ -24,7 +26,7 @@
         </div>
         <div class="row wrap">
             <div class="col-50  box" ng-repeat="item in home.data.products">
-                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
+                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})">
                     <div class="item item-image">
                         <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
@@ -35,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <ion-infinite-scroll ng-if="home.action.canBeLoaded()" on-infinite="home.action.loadMore()" immediate-check="false" distance="1%">
+        <ion-infinite-scroll ng-if="home.action.canBeLoaded()" spinner="android" on-infinite="home.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
     <section class="go-to-top">

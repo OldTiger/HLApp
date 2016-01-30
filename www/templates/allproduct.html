@@ -1,5 +1,7 @@
 <ion-view view-title="所有产品">
     <ion-content scrollbar-y="false" on-scroll="allProduct.action.getTop()">
+        <ion-refresher spinner="android" pulling-text="下拉刷新" on-refresh="allProduct.action.doRefresh()">
+        </ion-refresher>
         <div class="all-categories" ng-show="allProduct.data.showAllCategoriesFlag">
             <div class="categories row row-no-padding" ng-click="allProduct.data.showAllCategoriesFlag=false">
                 <span class=" ">全部分类</span>
@@ -15,7 +17,7 @@
         </div>
         <div class="row wrap">
             <div class="col-50  box" ng-repeat="item in allProduct.data.products">
-                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})" >
+                <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})">
                     <div class="item item-image">
                         <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
@@ -26,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <ion-infinite-scroll ng-if="allProduct.action.canBeLoaded()" on-infinite="allProduct.action.loadMore()" immediate-check="false" distance="1%">
+        <ion-infinite-scroll ng-if="allProduct.action.canBeLoaded()" spinner="android" on-infinite="allProduct.action.loadMore()" immediate-check="false" distance="1%">
         </ion-infinite-scroll>
     </ion-content>
     <section class="go-to-top">
