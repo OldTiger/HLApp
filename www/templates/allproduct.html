@@ -7,8 +7,8 @@
                 <span class=" ">全部分类</span>
                 <a class="ion-chevron-up"></a>
             </div>
-            <div class="categories row row-no-padding over-hide">
-                <a class="category col col-25 text-center" ng-class="{true:'selected-category'}[$index==allProduct.data.activeIndex]" ng-click="allProduct.action.activeInAllCategories($index);" ng-repeat="item in allProduct.data.categories">{{item.name}}</a>
+            <div class="categories row row-no-padding">
+                <a class="category col col-25 text-center over-hide" ng-class="{true:'selected-category'}[$index==allProduct.data.activeIndex]" ng-click="allProduct.action.activeInAllCategories($index);" ng-repeat="item in allProduct.data.categories">{{item.name}}</a>
             </div>
         </div>
         <div class="categories row row-no-padding">
@@ -22,7 +22,7 @@
                         <img class="all-product-img-size" image-lazy-loader="lines" image-lazy-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
                     <div class="item product-footer">
-                        <span class="product-title">{{item.name}}</span>
+                        <span class="product-title over-hide">{{item.name}}</span>
                         <span class="product-price">￥{{item.price}}</span>
                     </div>
                 </div>

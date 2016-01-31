@@ -1,6 +1,7 @@
 app.factory('HLService', function($http, $q, $timeout, $ionicPopup) {
         var factory = {
             server: "http://120.55.82.56:8080/SpinningShop/",
+            //server: "http://192.168.0.111:8080/SpinningShop/",
             get: function(name, callback) {
                 var deferred = $q.defer();
                 $timeout(function() {
