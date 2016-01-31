@@ -22,7 +22,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             resetProductsCallBack: function(data) {
                 var length = data.products.length;
                 var spliceLen = allProduct.data.products.length;
-                //±ÜÃâÏÈ´¥·¢infinite scroll
+                //prevent infinite scroll
                 allProduct.data.products = allProduct.data.products.concat(data.products);
                 allProduct.data.products.splice(0, spliceLen);
                 $scope.$broadcast('scroll.refreshComplete');
@@ -322,28 +322,16 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
         }
     })
     .controller('chatCtrl', function($scope, HLService) {
-        // var chat = this;
-        // var jqLite = angular.element;
-
-        // chat.action = {
-        //     getIframe: function() {
-        //         var top = document.getElementsByTagName('iframe');
-        //         var firstIframe = top.document.getElementsByTagName('iframe')[0].contentWindow.document;
-        //         var secondIframe = firstIframe.getElementsByTagName('iframe')[0].contentWindow;
-        //         var supportHolder = secondIframe.document.getElementsByClassName('support-holder');
-        //         var footer = secondIframe.document.getElementsByClassName('footer');
-        //         jqLite(footer).css({
-        //             'height': '50px'
-        //         });
-        //     }
-
-        // }
-        // window.onload = function() {
-        //     console.log('ready');
-        //     var top = document.getElementsByTagName('iframe');
-        //     var element = top.document.getElementsByTagName('iframe')[0];
-        //     element.onload = chat.action.getIframe();
-        // }
+        $scope.$on('$ionicView.leave',function(){
+            if (StatusBar) {
+                StatusBar.overlaysWebView(true);
+            }
+        });
+        $scope.$on('$ionicView.enter',function(){
+            if (StatusBar) {
+                StatusBar.overlaysWebView(false);
+            }
+        });
     })
     .directive('hlColor', function() {
         return {

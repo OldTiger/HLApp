@@ -7,12 +7,12 @@
                 <span class=" ">全部分类</span>
                 <a class="ion-chevron-up"></a>
             </div>
-            <div class="categories row row-no-padding">
+            <div class="categories row row-no-padding over-hide">
                 <a class="category col col-25 text-center" ng-class="{true:'selected-category'}[$index==allProduct.data.activeIndex]" ng-click="allProduct.action.activeInAllCategories($index);" ng-repeat="item in allProduct.data.categories">{{item.name}}</a>
             </div>
         </div>
         <div class="categories row row-no-padding">
-            <a class="category col col-18 text-center" ng-class="{true:'selected-category'}[item.id==allProduct.data.activeID]" ng-click="allProduct.action.active(item.id);" ng-repeat="item in allProduct.data.categories |limitTo:5:allProduct.data.activeIndex-(allProduct.data.activeIndex%5)">{{item.name}}</a>
+            <a class="category col col-18 text-center over-hide" ng-class="{true:'selected-category'}[item.id==allProduct.data.activeID]" ng-click="allProduct.action.active(item.id);" ng-repeat="item in allProduct.data.categories |limitTo:5:allProduct.data.activeIndex-(allProduct.data.activeIndex%5)">{{item.name}}</a>
             <a class="more-categories ion-chevron-down col col-10 text-center" ng-click="allProduct.data.showAllCategoriesFlag=true"></a>
         </div>
         <div class="row wrap">

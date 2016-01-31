@@ -21,6 +21,7 @@ var app = angular.module('starter', ['ionic', 'ngAnimate', 'ionicLazyLoad'])
             StatusBar.styleDefault();
         }
         var flag = window.localStorage.getItem('notFirstOpened');
+
         if (flag == null || flag == false) {
             $location.path('/introduce');
             window.localStorage.setItem('notFirstOpened', true);
