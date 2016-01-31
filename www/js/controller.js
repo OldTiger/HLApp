@@ -1,4 +1,4 @@
-app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegate) {
+app.controller('allProductCtrl', function($ionicPopup, $timeout, $scope, HLService, $ionicScrollDelegate) {
         var allProduct = this;
         var callback = {
             getCategoriesCallback: function(data) {
@@ -14,6 +14,13 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     productId = allProduct.data.products[length - 1].id;
                 }
                 if (data.products.length == 0 || productId == data.products[0].id) {
+                    var alertPopup = $ionicPopup.alert({
+                        template: '亲，好像没什么东西了~',
+                        cssClass: 'custom-popup', // Add
+                    });
+                    $timeout(function() {
+                        alertPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1000);
                     allProduct.data.canLoadMore = false;
                 }
                 allProduct.data.products = allProduct.data.products.concat(data.products);
@@ -124,7 +131,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
         }
         request();
     })
-    .controller('homeCtrl', function($ionicLoading, $scope, HLService, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
+    .controller('homeCtrl', function($timeout, $ionicPopup, $ionicLoading, $scope, HLService, $ionicScrollDelegate, $ionicSlideBoxDelegate) {
         var home = this;
         var callback = {
             getProductCallback: function(data) {
@@ -135,6 +142,13 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     productId = home.data.products[length - 1].id;
                 }
                 if (data.products.length == 0 || productId == data.products[0].id) {
+                    var alertPopup = $ionicPopup.alert({
+                        template: '亲，好像没什么东西了~',
+                        cssClass: 'custom-popup', // Add
+                    });
+                    $timeout(function() {
+                        alertPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1000);
                     home.data.canLoadMore = false;
                 }
                 home.data.products = home.data.products.concat(data.products);
@@ -231,7 +245,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
             }
         }
     })
-    .controller('newProductCtrl', function($scope, $ionicScrollDelegate, HLService) {
+    .controller('newProductCtrl', function($ionicPopup,$timeout,$scope, $ionicScrollDelegate, HLService) {
         var newProduct = this;
         var callback = {
             getProductCallback: function(data) {
@@ -242,6 +256,13 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                     productId = newProduct.data.products[length - 1].id;
                 }
                 if (data.products.length == 0 || productId == data.products[0].id) {
+                    var alertPopup = $ionicPopup.alert({
+                        template: '亲，好像没什么东西了~',
+                        cssClass: 'custom-popup', // Add
+                    });
+                    $timeout(function() {
+                        alertPopup.close(); //close the popup after 3 seconds for some reason
+                    }, 1000);
                     newProduct.data.canLoadMore = false;
                 }
                 newProduct.data.products = newProduct.data.products.concat(data.products);
