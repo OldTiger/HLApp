@@ -119,6 +119,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
         var request = function getProduct(id) {
             HLService.get("products/detailProJson?id=" + productDetail.data.id, function(data) {
                 productDetail.data.detail = data.products;
+                productDetail.action.updateSlide();
             })
         }
         request();
@@ -144,6 +145,7 @@ app.controller('allProductCtrl', function($scope, HLService, $ionicScrollDelegat
                 data.wheelImages.forEach(function(element) {
                     element.isProId = !isNaN(Number(element.url));
                 });
+                home.action.updateSlide();
             },
             resetProductsCallBack: function(data) {
                 var length = data.products.length;

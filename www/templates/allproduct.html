@@ -1,5 +1,5 @@
 <ion-view view-title="所有产品">
-    <ion-content scrollbar-y="false" on-scroll="allProduct.action.getTop()">
+    <ion-content scrollbar-y="false" on-scroll="allProduct.action.getTop()" lazy-scroll>
         <ion-refresher spinner="android" pulling-text="下拉刷新" on-refresh="allProduct.action.doRefresh()">
         </ion-refresher>
         <div class="all-categories" ng-show="allProduct.data.showAllCategoriesFlag">
@@ -19,7 +19,7 @@
             <div class="col-50  box" ng-repeat="item in allProduct.data.products">
                 <div class="list card half-card" ui-sref="productDetail({ id: {{item.id}}})">
                     <div class="item item-image">
-                        <img class="all-product-img-size" ng-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
+                        <img class="all-product-img-size" image-lazy-loader="lines" image-lazy-src="{{item.pic!='false'?item.pic:'img/noimg.png'}}">
                     </div>
                     <div class="item product-footer">
                         <span class="product-title">{{item.name}}</span>

@@ -3,11 +3,11 @@
       <button class="button icon ion-chevron-left" ng-click="productDetail.action.goBack()">
       </button>
     </ion-nav-buttons>
-    <ion-content>
+    <ion-content lazy-scroll>
         <div>
             <ion-slide-box  does-continue="true" on-slide-changed="productDetail.action.updateSlide()" auto-play="true">
                 <ion-slide class="" ng-repeat="item in productDetail.data.detail.images">
-                    <img class="detail-img-box" ng-src="{{item.image!='false'?item.image:'img/noimg.png'}}">
+                    <img class="detail-img-box" image-lazy-loader="lines" image-lazy-src="{{item.image!='false'?item.image:'img/noimg.png'}}">
                     </img>
                 </ion-slide>
                 <!-- <ion-slide class="">
