@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.hlapp405117" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>淘布</name>
-  <description>&#xD; 淘布应用&#xD;&#xD;&#xD;
+  <description>&#xD; 淘布应用&#xD;&#xD;&#xD;&#xD;
         </description>
-  <author email="ddgong@foxmail.com" href="http://example.com.com/">&#xD; Your Name Here&#xD;&#xD;&#xD;
+  <author email="ddgong@foxmail.com" href="http://example.com.com/">&#xD; Gongdadong&#xD;&#xD;&#xD;&#xD;
         </author>
   <content src="index.html"/>
   <access origin="*"/>
@@ -13,6 +13,7 @@
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
+  <preference name="SplashScreenDelay" value="10000"/>
   <preference name="AutoHideSplashScreen" value="false"/>
   <preference name="StatusBarBackgroundColor" value="#66afd5"/>
   <preference name="StatusBarStyle" value="lightcontent"/>
